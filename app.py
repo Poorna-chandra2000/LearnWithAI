@@ -5,7 +5,7 @@ from exports import resume_blocks, text_blocks, clean_blocks, make_pdf, make_doc
 from tools import TOOLS
 import jwt, requests, markdown, bleach
 from bson import ObjectId
-from flask import Flask, request, jsonify, make_response, Response, g, abort
+from flask import Flask, render_template,request, jsonify, make_response, Response, g, abort
 from pymongo import MongoClient, ReturnDocument
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
@@ -201,6 +201,11 @@ def spa(slug=None, n=None):
 def course_seo(slug):
     c = db.courses.find_one({"slug": slug})
     return index_page(f"{c['title']} Course - LearnWithAI", c["desc"]) if c else index_page(*DEFAULT)
+
+
+@app.route("/index.html")
+def index():
+    return render_template("index.html")
 
 # ---------- account API ----------
 @app.route("/api/me")
