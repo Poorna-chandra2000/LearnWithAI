@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<meta property="og:title" content="{{TITLE}}"><meta property="og:description" content="{{DESC}}"><meta property="og:type" content="website">
+<meta name="theme-color" content="#090d1e">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<script>try{var d=document.documentElement;d.dataset.theme=localStorage.theme||'midnight';d.dataset.mode=localStorage.mode||'dark'}catch(e){}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"LearnWithAI","url":"{{SITE}}"}</script>
+<style>
+:root{--bg:#090d1e;--card:rgba(255,255,255,.045);--line:rgba(255,255,255,.10);--text:#eef1ff;--mute:#a1abd3;--inp:rgba(255,255,255,.06);--a:#6366f1;--b:#22d3ee;--grad:linear-gradient(135deg,var(--a),var(--b));--font:'Plus Jakarta Sans',system-ui,sans-serif;--head:'Sora','Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',ui-monospace,Consolas,monospace}
+html[data-mode=light]{--bg:#f4f6fc;--card:#fff;--line:#e1e5f2;--text:#141a33;--mute:#5a6488;--inp:#f0f3fb}
+html[data-theme=aurora]{--a:#10b981;--b:#84cc16}html[data-theme=sunset]{--a:#f97316;--b:#ec4899}html[data-theme=ocean]{--a:#0ea5e9;--b:#6366f1}
+html[data-theme=royal]{--a:#a855f7;--b:#ec4899}html[data-theme=rose]{--a:#f43f5e;--b:#f59e0b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--text);line-height:1.7;background:radial-gradient(900px 500px at 8% -10%,color-mix(in srgb,var(--a) 26%,transparent),transparent),radial-gradient(800px 500px at 100% 0,color-mix(in srgb,var(--b) 20%,transparent),transparent),var(--bg);background-attachment:fixed}
+a{color:var(--b);text-decoration:none}h1,h2,h3,h4{font-family:var(--head);letter-spacing:-.02em;line-height:1.25}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{max-width:1120px;margin:auto;padding:10px 18px;display:flex;align-items:center;gap:14px}
+.logo{font-family:var(--head);font-weight:800;font-size:21px;color:var(--text);margin-right:auto}.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;gap:4px}nav a{color:var(--mute);padding:7px 12px;border-radius:10px;font-weight:600;font-size:14px}nav a:hover{color:var(--text);background:var(--inp)}
+.menu{display:none;background:var(--inp);color:var(--text);border:1px solid var(--line);border-radius:10px;font-size:20px;padding:4px 12px;cursor:pointer}
+.pal{display:none;position:absolute;right:16px;top:100%;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:12px;gap:10px;align-items:center;box-shadow:0 20px 40px -10px #0008}.pal.open{display:flex}
+.dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0}.dot:hover{transform:scale(1.15)}
+.wrap{max-width:1120px;margin:auto;padding:26px 18px 70px}
+.hero{text-align:center;padding:50px 8px 26px}
+.hero h1{font-size:clamp(32px,6vw,58px);margin:0 0 14px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mute);max-width:660px;margin:auto auto 20px;font-size:clamp(16px,2.4vw,19px)}
+h2.big{font-size:clamp(24px,4vw,36px);text-align:center;margin:0}
+.pill{border:1px solid var(--line);background:var(--inp);border-radius:99px;padding:5px 14px;color:var(--mute);font-size:13px;font-weight:600;display:inline-block;margin:4px 4px 4px 0}
+.btn{background:var(--grad);color:#fff;border:0;padding:11px 20px;border-radius:12px;cursor:pointer;font-size:15px;font-weight:700;font-family:inherit;display:inline-block;box-shadow:0 10px 24px -10px var(--a);transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn.ghost{background:var(--inp);border:1px solid var(--line);color:var(--text);box-shadow:none}.btn.red{background:#dc2626;box-shadow:none}.btn:disabled{opacity:.6}
+input,textarea,select{width:100%;padding:12px 14px;margin:6px 0;background:var(--inp);border:1px solid var(--line);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;outline:0}
+input:focus,textarea:focus,select:focus{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 30%,transparent)}
+select option{background:var(--bg);color:var(--text)}input[type=checkbox]{width:auto;margin-right:8px}label{display:block;color:var(--mute);font-size:14px;margin-top:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;margin:14px 0;backdrop-filter:blur(10px);box-shadow:0 14px 34px -22px #000a}
+.course{transition:.25s;margin:0}.course:hover{transform:translateY(-6px);border-color:var(--a);box-shadow:0 22px 40px -22px var(--a)}
+.ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:28px;background:color-mix(in srgb,var(--a) 18%,transparent);margin-bottom:6px}
+.course h3{margin:8px 0 4px}.course p{color:var(--mute);margin:0 0 14px;font-size:14px}
+.narrow{max-width:640px;margin:30px auto}.err{color:#f87171}.ok{color:#4ade80}
+.notice{background:color-mix(in srgb,var(--a) 16%,transparent);border:1px solid color-mix(in srgb,var(--a) 50%,transparent);border-radius:14px;padding:11px 16px;margin:8px 0}
+.av{width:44px;height:44px;border-radius:50%;object-fit:cover;background:var(--inp);border:2px solid var(--line)}.av.big{width:110px;height:110px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.hm{display:inline}
+.founder{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;padding:30px}
+.ring{padding:5px;border-radius:50%;background:var(--grad);width:max-content}.ring img,.ring .av{display:block;width:160px;height:160px;border-radius:50%;object-fit:cover;border:5px solid var(--bg)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:26px 0}.stat{text-align:center;margin:0}
+.stat b{font-family:var(--head);font-size:38px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+.team .card{text-align:center;margin:0}.team img,.team .av{width:96px;height:96px;margin:auto}
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}.post{margin:0}.post img{width:100%;border-radius:14px;margin-bottom:10px}.post p,.pre{white-space:pre-wrap}.post small{color:var(--mute)}
+ol.lessons{padding-left:22px}ol.lessons li{padding:9px 0;border-bottom:1px solid var(--line)}
+.lesson h1,.lesson h2,.lesson h3{margin-top:28px}.lesson h2{border-bottom:1px solid var(--line);padding-bottom:6px}
+.lesson pre{background:#070b1a;color:#e6ebff;border:1px solid var(--line);padding:16px;border-radius:14px;overflow:auto;position:relative}
+.lesson code{font-family:var(--mono);font-size:13.5px}.lesson :not(pre)>code{background:var(--inp);padding:2px 7px;border-radius:6px}
+.lesson table{border-collapse:collapse;display:block;overflow:auto}.lesson td,.lesson th{border:1px solid var(--line);padding:6px 10px}
+.copy{position:absolute;top:8px;right:8px;background:var(--a);color:#fff;border:0;border-radius:8px;padding:3px 11px;cursor:pointer;font-size:12px}
+.loader{text-align:center;padding:60px;color:var(--mute)}
+.spin{width:46px;height:46px;border:4px solid var(--line);border-top-color:var(--b);border-radius:50%;margin:0 auto 14px;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+table.t{width:100%;border-collapse:collapse;display:block;overflow:auto}.t td,.t th{border-bottom:1px solid var(--line);padding:8px;text-align:left;font-size:14px}
+footer{text-align:center;color:var(--mute);padding:30px;border-top:1px solid var(--line)}
+.legal h3{margin-top:24px}.legal li{margin:4px 0}.danger{border-color:#7f1d1d}
+.toasts{position:fixed;right:14px;bottom:14px;display:flex;flex-direction:column;gap:8px;z-index:50;max-width:min(380px,calc(100vw - 28px))}
+.toast{background:var(--grad);color:#fff;padding:13px 18px;border-radius:14px;cursor:pointer;font-weight:600;box-shadow:0 14px 34px -10px #000a;animation:up .35s}@keyframes up{from{transform:translateY(20px);opacity:0}}
+@media(max-width:820px){.menu{display:block}nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);flex-direction:column;padding:10px 16px;border-bottom:1px solid var(--line)}nav.open{display:flex}.hm{display:none}
+ .founder,.grid2,.two{grid-template-columns:1fr}.founder{text-align:center;justify-items:center}.card{padding:18px}.pal{right:8px}}
+.sheet{background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif;font-size:14px;padding:34px;border-radius:6px;max-width:800px;margin:12px auto;box-shadow:0 12px 30px -14px #000}
+.sheet div{padding:1px 4px;outline:0}.sheet div:focus{background:#eef3ff}.sheet [data-k=name]{font-size:24px;font-weight:700}.sheet [data-k=contact]{font-size:12px;color:#444}
+.sheet [data-k=head]{font-weight:700;border-bottom:1px solid #111;margin-top:12px}.sheet [data-k=line]{font-weight:700;margin-top:6px}.sheet [data-k=bullet]{margin-left:20px;display:list-item;list-style:disc}
+.policybox{max-height:280px;overflow:auto;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--inp);font-size:14px;margin:10px 0}.policybox h2{font-size:18px;margin-top:0}.policybox h3{font-size:15px;margin:14px 0 4px}
+.video{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;margin:14px 0;background:#000}.video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}.hint{color:var(--mute);font-size:13px}
+@media print{body *{visibility:hidden}#out,#out *{visibility:visible}#out{position:absolute;left:0;top:0;width:100%;color:#000;background:#fff;padding:20px}#out *{color:#000!important}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <a class="logo" href="/" data-link>Learn<span>With</span>AI</a>
+  <nav id="nav"><a href="/" data-link>Courses</a><a href="/feed" data-link>Updates</a><a href="/career" data-link>Career Tools</a><a href="/about" data-link>About</a><a href="/contact" data-link>Contact</a><a href="/privacy" data-link>Privacy</a></nav>
+  <span id="auth" class="row"></span><button class="menu" id="thm" aria-label="Themes" style="display:block">🎨</button><button class="menu" id="mb" aria-label="Menu">☰</button>
+</div><div id="pal" class="pal"></div></header>
+<div class="wrap" id="app"></div>
+<div class="toasts" id="toasts"></div>
+<footer>&copy; LearnWithAI &middot; <a href="/privacy" data-link>Privacy &amp; Terms</a> &middot; <a href="/contact" data-link>Grievance / Contact</a></footer>
+
+<script>
+const app = document.getElementById('app'), $ = id => document.getElementById(id);
+let user = null, photoData = null;
+const ICONS = {'spring-boot':'🍃','spring-ai':'🤖','mcp':'🔌','fastmcp':'⚡','python':'🐍','python-data-science':'📊','realtime-data':'📡','postgresql':'🐘','neo4j':'🕸️','linux-devops':'🐧','aws-cli':'☁️'};
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+async function api(path, method='GET', body){
+  const r = await fetch('/api' + path, {method, headers:{'Content-Type':'application/json'}, body: body ? JSON.stringify(body) : undefined});
+  const d = await r.json().catch(() => ({}));
+  if(!r.ok) throw new Error(d.error || 'Something went wrong');
+  return d;
+}
+function go(p){ history.pushState({}, '', p); route(); window.scrollTo(0,0); }
+document.addEventListener('click', e => { const a = e.target.closest('a[data-link]'); if(a){ e.preventDefault(); $('nav').classList.remove('open'); go(a.getAttribute('href')); }});
+window.onpopstate = route;
+const loading = m => app.innerHTML = `<div class="loader"><div class="spin"></div>${esc(m)}</div>`;
+const setTitle = (t, d) => { document.title = t + ' | LearnWithAI'; if(d) document.querySelector('meta[name=description]').content = d; };
+const needLogin = () => app.innerHTML = '<div class="card narrow">Please <a href="/login" data-link>log in</a> or <a href="/signup" data-link>sign up</a> to use this page.</div>';
+const avatar = (u, cls='') => u.has_photo ? `<img class="av ${cls}" src="/api/photo/${u.id}?v=${Date.now()}" alt="profile photo">` : `<div class="av ${cls}" style="display:grid;place-items:center">👤</div>`;
+
+function renderAuth(){
+  $('auth').innerHTML = user
+    ? `${user.role==='admin' ? '<a href="/admin" data-link>Admin</a>' : ''}<a href="/profile" data-link class="row">${avatar(user)} <span class="hm">My profile</span></a><button class="btn ghost" id="lo">Logout</button>`
+    : `<a class="btn ghost" href="/login" data-link>Login</a><a class="btn" href="/signup" data-link>Sign up free</a>`;
+  if($('lo')) $('lo').onclick = async () => { await api('/logout','POST'); user = null; renderAuth(); go('/'); };
+}
+
+async function route(){
+  const p = location.pathname; let m;
+  try{
+    if(p === '/') return await home();
+    if(p === '/login' || p === '/signup') return authView(p.slice(1));
+    if(p === '/about') return await aboutView();
+    if(p === '/feed') return await feedView();
+    if(p === '/contact') return contactView();
+    if(p === '/privacy') return privacyView();
+    if(p === '/profile') return profileView();
+    if(p === '/career') return careerView();
+    if(p === '/admin') return await adminView();
+    if(m = p.match(/^\/course\/([^/]+)$/)) return await courseView(m[1]);
+    if(m = p.match(/^\/lesson\/([^/]+)\/(\d+)$/)) return await lessonView(m[1], +m[2]);
+    app.innerHTML = '<div class="card">Page not found. <a href="/" data-link>Go home</a></div>';
+  }catch(e){ app.innerHTML = `<div class="card err">${esc(e.message)}</div>`; }
+}
+
+async function home(){
+  setTitle('Learn Spring Boot, Python, AWS, DevOps with AI', 'AI-driven step-by-step courses, resume builder and ATS profile optimizer.');
+  loading('Loading...');
+  const [{courses}, {notices}, f] = await Promise.all([api('/courses'), api('/notices'), api('/founder').catch(() => null)]);
+  app.innerHTML = `${notices.map(n => `<div class="notice">📢 ${esc(n.text)}</div>`).join('')}
+    <section class="hero"><h1>Learn to build. Step by step. With AI.</h1>
+    <p>Pick a course. Get installation, folder structure, full copy-paste code and a line-by-line explanation. Then build your ATS-ready resume.</p>
+    <span class="pill">1. Sign up</span><span class="pill">2. Pick a course</span><span class="pill">3. AI writes your lesson</span><span class="pill">4. Copy, run, learn</span><br>
+    ${user ? '' : '<a class="btn" href="/signup" data-link style="margin-top:14px">Start learning free</a>'}</section>
+    <input id="q" placeholder="Search courses (spring, aws, python...)" style="max-width:420px;display:block;margin:0 auto 20px">
+    <div class="grid" id="grid"></div>
+    ${f ? `<div class="card row" style="margin-top:34px">${f.has_photo ? '<img class="av big" src="/api/founder-photo" alt="Founder">' : '<div class="av big" style="display:grid;place-items:center">👨‍💻</div>'}
+      <div><div style="color:var(--mute)">Created by</div><h3 style="margin:0">${esc(f.name)}</h3><div style="color:var(--mute)">${esc(f.degree)}</div>
+      <a href="${esc(f.linkedin)}" target="_blank" rel="noopener">Connect on LinkedIn &rarr;</a> &middot; <a href="/about" data-link>About us</a></div></div>` : ''}`;
+  const draw = t => $('grid').innerHTML = courses.filter(c => (c.title+c.desc).toLowerCase().includes(t.toLowerCase()))
+    .map(c => `<div class="card course"><div class="ico">${ICONS[c.slug]||'📘'}</div><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p>
+      <a class="btn" href="/course/${esc(c.slug)}" data-link>Open course</a></div>`).join('') || '<p>No course found.</p>';
+  draw(''); $('q').oninput = e => draw(e.target.value);
+}
+
+async function courseView(slug){
+  loading('Preparing your syllabus with AI (first time takes ~10 seconds)...');
+  const d = await api('/course/' + slug), c = d.course;
+  setTitle(c.title + ' Course', c.desc);
+  app.innerHTML = `<div class="card"><div class="ico">${ICONS[c.slug]||'📘'}</div><h1>${esc(c.title)}</h1><p>${esc(c.desc)}</p>
+    <p>Lessons are built from the official documentation: <a href="${esc(c.docs)}" target="_blank" rel="noopener">${esc(c.docs)}</a></p></div>${videoHTML(c.video)}
+    ${d.locked ? `<div class="card"><h3>🔒 AI lessons are for registered learners</h3><p>Create a free account to unlock the full syllabus and lessons.</p>
+      <a class="btn" href="/signup" data-link>Sign up free</a> <a class="btn ghost" href="/login" data-link>Login</a></div>`
+    : `<div class="card"><h3>Lessons</h3><ol class="lessons">${d.lessons.map((l,i) => `<li><a href="/lesson/${esc(c.slug)}/${i}" data-link>${esc(l)}</a></li>`).join('')}</ol></div>`}`;
+}
+
+async function lessonView(slug, n){
+  if(!user) return needLogin();
+  loading('AI is writing your lesson (first learner only; after that it loads instantly)...');
+  const d = await api(`/lesson/${slug}/${n}`);
+  setTitle(d.title + ' - ' + d.course.title, 'Step by step: ' + d.title);
+  app.innerHTML = `<p><a href="/course/${esc(slug)}" data-link>&larr; ${esc(d.course.title)}</a></p>
+    <h1>${n+1}. ${esc(d.title)}</h1>${d.personal ? '<span class="pill">✨ Personalised for you</span> <button class="btn ghost" id="rs">Back to standard lesson</button>' : ''}
+    <div class="card lesson" id="les">${d.html}</div>
+    <div class="row">${n>0 ? `<a class="btn ghost" href="/lesson/${slug}/${n-1}" data-link>&larr; Previous</a>`:''}
+    ${n<d.total-1 ? `<a class="btn" href="/lesson/${slug}/${n+1}" data-link>Next lesson &rarr;</a>`:''}</div>
+    <div class="card"><h3>🙋 Stuck? Ask the AI tutor</h3>
+    <textarea id="q" rows="3" placeholder="Describe what you did not understand..."></textarea>
+    <div class="row"><button class="btn" id="ask">Ask (quick answer)</button><button class="btn ghost" id="upd">Rewrite this lesson for me</button></div>
+    <div id="ans" class="lesson" style="margin-top:14px"></div></div>`;
+  copyBtns($('les'));
+  if($('rs')) $('rs').onclick = async () => { await api('/lesson/reset','POST',{slug,n}); lessonView(slug,n); };
+  const send = update => async () => {
+    const q = $('q').value.trim(); if(!q) return;
+    $('ans').innerHTML = 'Thinking...';
+    try{ const r = await api('/ask','POST',{slug, n, q: d.title + ': ' + q, update});
+      if(update) return lessonView(slug, n); $('ans').innerHTML = r.html; copyBtns($('ans')); }
+    catch(e){ $('ans').innerHTML = `<span class="err">${esc(e.message)}</span>`; }
+  };
+  $('ask').onclick = send(false); $('upd').onclick = send(true);
+}
+function copyBtns(root){
+  root.querySelectorAll('pre').forEach(pre => {
+    const b = document.createElement('button'); b.className = 'copy'; b.textContent = 'Copy';
+    b.onclick = () => { navigator.clipboard.writeText(pre.querySelector('code')?.innerText || pre.innerText); b.textContent = 'Copied!'; setTimeout(() => b.textContent = 'Copy', 1500); };
+    pre.appendChild(b);
+  });
+}
+
+/* ---------- profile form (used by signup and profile page) ---------- */
+function pform(p = {}){
+  return `<div class="two"><input id="fn" placeholder="First name *" value="${esc(p.first_name)}"><input id="ln" placeholder="Last name *" value="${esc(p.last_name)}"></div>
+    <label>Date of birth * (18+ only)</label><input id="dob" type="date" value="${esc(p.dob)}">
+    <input id="dg" placeholder="Degree / qualification * (e.g. B.E. Computer Science)" value="${esc(p.degree)}">
+    <select id="st"><option>Learner</option><option>Employed</option></select>
+    <input id="co" placeholder="Company you work at *" value="${esc(p.company)}">
+    <input id="li" placeholder="LinkedIn profile link * (https://www.linkedin.com/in/...)" value="${esc(p.linkedin)}">
+    <label>Profile photo (optional, saved inside the database as encoded text)</label><input id="ph" type="file" accept="image/*">`;
+}
+function pinit(p = {}){
+  photoData = null; $('st').value = p.status || 'Learner';
+  const t = () => $('co').style.display = $('st').value === 'Employed' ? '' : 'none'; $('st').onchange = t; t();
+  $('ph').onchange = e => { const f = e.target.files[0]; if(!f) return; const img = new Image();
+    img.onload = () => { const s = Math.min(1, 320 / Math.max(img.width, img.height)), c = document.createElement('canvas');
+      c.width = img.width * s; c.height = img.height * s; c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); photoData = c.toDataURL('image/jpeg', .8); };
+    img.src = URL.createObjectURL(f); };
+}
+const pread = () => ({first_name:$('fn').value, last_name:$('ln').value, dob:$('dob').value, degree:$('dg').value, status:$('st').value, company:$('co').value, linkedin:$('li').value, photo:photoData});
+
+function authView(mode){
+  if(user) return go('/');
+  setTitle(mode === 'login' ? 'Login' : 'Sign up');
+  if(mode === 'login'){
+    app.innerHTML = `<div class="card narrow"><h2>Welcome back</h2><input id="e" type="email" placeholder="Email"><input id="p" type="password" placeholder="Password">
+      <p class="err" id="m"></p><button class="btn" id="go">Login</button></div>`;
+    $('go').onclick = async () => { try{ user = (await api('/login','POST',{email:$('e').value, password:$('p').value})).user; renderAuth(); go('/'); }catch(e){ $('m').textContent = e.message; } };
+    return;
+  }
+  app.innerHTML = `<div class="card narrow"><h2>Create your free account</h2>
+    <input id="e" type="email" placeholder="Email *"><input id="p" type="password" placeholder="Password * (8+ characters)">${pform()}
+    <div class="policybox">${POLICY}</div>
+    <div class="card" style="background:var(--inp)"><b>Consent</b>
+    <label><input type="checkbox" id="c1"> I am 18+ and accept the Terms of use in the notice above.</label>
+    <label><input type="checkbox" id="c2"> I have read and understood the privacy notice above.</label>
+    <label><input type="checkbox" id="c3"> I consent to my profile being used only for learning, and to share with companies/recruiters for job references and hiring when I choose to apply or when the admin verifies a request.</label>
+    <label><input type="checkbox" id="c4"> (Optional) Send me learning notifications and course updates.</label></div>
+    <p class="err" id="m"></p><button class="btn" id="go">Create account</button></div>`;
+  pinit();
+  $('go').onclick = async () => { try{
+    user = (await api('/signup','POST',{email:$('e').value, password:$('p').value, ...pread(), notify:$('c4').checked,
+      consent:{terms:$('c1').checked, privacy:$('c2').checked, data_use:$('c3').checked}})).user; renderAuth(); go('/'); }
+    catch(e){ $('m').textContent = e.message; } };
+}
+
+function profileView(){
+  if(!user) return needLogin();
+  setTitle('My profile');
+  app.innerHTML = `<div class="card narrow"><div class="row">${avatar(user,'big')}<div><h2 style="margin:0">${esc(user.first_name)} ${esc(user.last_name)}</h2><div style="color:var(--mute)">${esc(user.email)} &middot; ${esc(user.role)}</div></div></div>
+    ${pform(user)}<label><input type="checkbox" id="nt" ${user.notify ? 'checked' : ''}> Send me learning notifications</label>
+    ${user.has_photo ? '<label><input type="checkbox" id="rp"> Remove my photo</label>' : ''}
+    <p id="m"></p><button class="btn" id="sv">Save profile</button></div>
+    <div class="card narrow"><h3>Change password</h3><input id="op" type="password" placeholder="Current password"><input id="np" type="password" placeholder="New password (8+ characters)">
+    <p id="pm"></p><button class="btn ghost" id="cp">Change password</button></div>
+    ${user.role === 'admin' ? '' : `<div class="card narrow danger"><h3>Close my profile permanently</h3>
+    <p style="color:var(--mute)">This permanently deletes your profile, photo, personalised lessons and usage data. It cannot be undone.</p>
+    <input id="dp" type="password" placeholder="Enter your password to confirm"><p id="dm" class="err"></p><button class="btn red" id="dl">Delete my account forever</button></div>`}`;
+  pinit(user);
+  $('sv').onclick = async () => { const m = $('m'); try{ user = (await api('/profile','PUT',{...pread(), notify:$('nt').checked, remove_photo: $('rp')?.checked})).user;
+    renderAuth(); profileView(); $('m').className='ok'; $('m').textContent = 'Saved!'; }catch(e){ m.className='err'; m.textContent = e.message; } };
+  $('cp').onclick = async () => { const m = $('pm'); try{ await api('/password','POST',{old:$('op').value, new:$('np').value}); m.className='ok'; m.textContent='Password changed'; }catch(e){ m.className='err'; m.textContent = e.message; } };
+  if($('dl')) $('dl').onclick = async () => { if(!confirm('Delete your account permanently?')) return;
+    try{ await api('/profile/delete','POST',{password:$('dp').value}); user = null; renderAuth(); go('/'); }catch(e){ $('dm').textContent = e.message; } };
+}
+
+/* ---------- career tools ---------- */
+let lastText = '';
+const videoHTML = s => !s ? '' : /youtube\.com\/embed|player\.vimeo\.com/.test(s) ? `<div class="video"><iframe src="${esc(s)}" allowfullscreen loading="lazy" title="Video"></iframe></div>` : `<div class="video"><video src="${esc(s)}" controls preload="metadata"></video></div>`;
+const readFiles = input => Promise.all([...input.files].slice(0, 3).map(f => new Promise(res => { const r = new FileReader(); r.onload = () => res({name: f.name, data: String(r.result).split(',')[1]}); r.readAsDataURL(f); })));
+async function dl(body, fmt, name){
+  const r = await fetch('/api/export', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({...body, fmt, name})});
+  if(!r.ok){ alert((await r.json().catch(() => ({}))).error || 'Export failed'); return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(await r.blob()); a.download = name + '.' + fmt; a.click();
+}
+async function careerView(){
+  setTitle('Career Tools', 'ATS resume builder with PDF and Word download, cover letters, interview prep and more.');
+  if(!user) return needLogin();
+  const {tools} = await api('/tools');
+  const all = [{key:'resume',icon:'📄',title:'ATS Resume Builder',desc:'Preview, then download PDF or Word'},{key:'optimize',icon:'🎯',title:'ATS Profile Optimizer',desc:'Score your resume against a job'}, ...tools];
+  app.innerHTML = `<h1>Career tools</h1><div class="grid" id="tg">${all.map(t => `<div class="card course" data-k="${esc(t.key)}" style="cursor:pointer"><div class="ico">${t.icon}</div><h3>${esc(t.title)}</h3><p>${esc(t.desc)}</p></div>`).join('')}</div><div id="panel"></div>`;
+  document.querySelectorAll('#tg [data-k]').forEach(c => c.onclick = () => { const k = c.dataset.k; k === 'resume' ? resumePanel() : k === 'optimize' ? optimizePanel() : toolPanel(tools.find(t => t.key === k)); $('panel').scrollIntoView({behavior:'smooth'}); });
+  resumePanel();
+}
+function resumePanel(){
+  $('panel').innerHTML = `<div class="card"><h3>📄 ATS Resume Builder</h3><p class="hint">One-column ATS template: standard headings, plain fonts, no tables, icons or photos. Your profile fills in automatically.</p>
+    <label>Experience, projects, skills, certifications</label><textarea id="a" rows="8"></textarea><label>Job description (optional, tailors keywords)</label><textarea id="b" rows="5"></textarea>
+    <p id="m" class="err"></p><button class="btn" id="run">Generate resume</button></div>
+    <div class="card" id="pv" style="display:none"><div class="row"><button class="btn" id="dp">⬇ Download PDF</button><button class="btn" id="dw">⬇ Download Word</button></div>
+    <p class="hint">Preview: click any line to edit it (fix the [add number] placeholders) before downloading.</p><div class="sheet" id="sheet"></div></div>`;
+  const get = () => [...$('sheet').children].map(e => [e.dataset.k, e.innerText.trim()]).filter(x => x[1]);
+  $('run').onclick = async e => { e.target.disabled = true; $('m').textContent = 'Generating...';
+    try{ const r = await api('/career/resume','POST',{details:$('a').value, jd:$('b').value});
+      $('sheet').innerHTML = r.blocks.map(([k,t]) => `<div data-k="${k}" contenteditable="true">${esc(t)}</div>`).join(''); $('pv').style.display = ''; $('m').textContent = ''; $('pv').scrollIntoView({behavior:'smooth'}); }
+    catch(err){ $('m').textContent = err.message; } e.target.disabled = false; };
+  $('dp').onclick = () => dl({blocks:get()}, 'pdf', 'resume'); $('dw').onclick = () => dl({blocks:get()}, 'docx', 'resume');
+}
+function optimizePanel(){
+  $('panel').innerHTML = `<div class="card"><h3>🎯 ATS Profile Optimizer</h3><p class="hint">Paste the job description and your current resume or LinkedIn About text.</p>
+    <label>Job description *</label><textarea id="b" rows="7"></textarea><label>Your current resume / LinkedIn text</label><textarea id="a" rows="7"></textarea>
+    <p id="m" class="err"></p><button class="btn" id="run">Analyse</button></div><div class="card" id="outc" style="display:none"><div class="row" id="ex"></div><div class="lesson" id="out"></div></div>`;
+  runTool('/career/optimize', () => ({current:$('a').value, jd:$('b').value}), 'ats-report');
+}
+function toolPanel(t){
+  $('panel').innerHTML = `<div class="card"><h3>${t.icon} ${esc(t.title)}</h3>${t.fields.map(([id,label,rows]) => `<label>${esc(label)}</label>${rows > 1 ? `<textarea id="f_${id}" rows="${rows}"></textarea>` : `<input id="f_${id}">`}`).join('')}
+    <p id="m" class="err"></p><button class="btn" id="run">Generate</button></div><div class="card" id="outc" style="display:none"><div class="row" id="ex"></div><div class="lesson" id="out"></div></div>`;
+  runTool('/tools/' + t.key, () => Object.fromEntries(t.fields.map(([id]) => [id, $('f_' + id).value])), t.key);
+}
+function runTool(path, body, name){
+  $('run').onclick = async e => { e.target.disabled = true; $('m').textContent = 'Working...'; $('outc').style.display = 'none';
+    try{ const r = await api(path, 'POST', body()); lastText = r.text; $('out').innerHTML = r.html; copyBtns($('out')); $('outc').style.display = '';
+      $('ex').innerHTML = '<button class="btn" id="e1">⬇ PDF</button><button class="btn" id="e2">⬇ Word</button><button class="btn ghost" id="e3">Copy text</button>';
+      $('e1').onclick = () => dl({text:lastText}, 'pdf', name); $('e2').onclick = () => dl({text:lastText}, 'docx', name);
+      $('e3').onclick = () => { navigator.clipboard.writeText(lastText); $('e3').textContent = 'Copied!'; };
+      $('m').textContent = ''; $('outc').scrollIntoView({behavior:'smooth'}); }catch(err){ $('m').textContent = err.message; }
+    e.target.disabled = false; };
+}
+
+/* ---------- theme, toasts, live updates (WebSocket) ---------- */
+const PAL = {midnight:['#6366f1','#22d3ee'],aurora:['#10b981','#84cc16'],sunset:['#f97316','#ec4899'],ocean:['#0ea5e9','#6366f1'],royal:['#a855f7','#ec4899'],rose:['#f43f5e','#f59e0b']};
+function buildPal(){
+  $('pal').innerHTML = Object.entries(PAL).map(([k,[a,b]]) => `<button class="dot" data-t="${k}" title="${k}" style="background:linear-gradient(135deg,${a},${b})"></button>`).join('') + '<button class="btn ghost" id="md">☀️ / 🌙</button>';
+  $('thm').onclick = () => $('pal').classList.toggle('open'); $('mb').onclick = () => $('nav').classList.toggle('open');
+  $('pal').querySelectorAll('.dot').forEach(b => b.onclick = () => { document.documentElement.dataset.theme = b.dataset.t; try{ localStorage.theme = b.dataset.t; }catch(e){} });
+  $('md').onclick = () => { const m = document.documentElement.dataset.mode === 'light' ? 'dark' : 'light'; document.documentElement.dataset.mode = m; try{ localStorage.mode = m; }catch(e){} };
+}
+function toast(msg, link){
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  t.onclick = () => { t.remove(); if(link) go(link); }; $('toasts').appendChild(t); setTimeout(() => t.remove(), 8000);
+}
+let lastEv = null;
+async function pollEvents(){      // checks for new courses / posts / announcements every 20 seconds (works on Vercel)
+  try{ const r = await api('/events' + (lastEv ? '?since=' + encodeURIComponent(lastEv) : ''));
+    r.events.forEach(m => toast(m.type === 'course' ? '🎓 New course: ' + m.title : m.type === 'post' ? '📸 New post: ' + m.title : '📢 ' + m.text, m.link));
+    if(r.events.length && ['/', '/feed'].includes(location.pathname)) route(); lastEv = r.now; }catch(e){}
+  setTimeout(pollEvents, 20000);
+}
+function shrink(file, max, cb){
+  const img = new Image(); img.onload = () => { const k = Math.min(1, max / Math.max(img.width, img.height)), c = document.createElement('canvas');
+    c.width = img.width * k; c.height = img.height * k; c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); cb(c.toDataURL('image/jpeg', .82)); };
+  img.src = URL.createObjectURL(file);
+}
+
+/* ---------- about page and updates feed ---------- */
+async function aboutView(){
+  setTitle('About us', 'The story, mission and team behind LearnWithAI.'); loading('Loading...');
+  const {about:a, founder:f, team, stats} = await api('/about');
+  const ic = n => ({linkedin:'💼',instagram:'📸',youtube:'▶️',github:'🐙',x:'🐦',twitter:'🐦',facebook:'📘',website:'🌐'})[n.toLowerCase()] || '🔗';
+  const soc = a.socials.map(x => `<a class="btn ghost" href="${esc(x.url)}" target="_blank" rel="noopener">${ic(x.name)} ${esc(x.name)}</a>`).join('');
+  app.innerHTML = `<section class="card founder"><div class="ring">${f.has_photo ? '<img src="/api/founder-photo?v=' + Date.now() + '" alt="Founder">' : '<div class="av" style="display:grid;place-items:center;font-size:56px">👨‍💻</div>'}</div>
+    <div><span class="pill">Founder &amp; Creator</span><h1 style="margin:6px 0">${esc(f.name)}</h1>
+    <div style="color:var(--mute)">${esc(f.degree)}${f.company ? ' &middot; ' + esc(f.company) : ''}</div>
+    ${a.founder_bio ? `<p class="pre">${esc(a.founder_bio)}</p>` : ''}<div>${a.highlights.map(h => `<span class="pill">✨ ${esc(h)}</span>`).join('')}</div>
+    <div class="row" style="margin-top:12px">${soc}</div></div></section>
+    <section class="hero" style="padding:26px 0 8px"><h2 class="big">${esc(a.tagline)}</h2></section>
+    ${videoHTML(a.video)}<div class="grid2"><div class="card"><h3>📖 Our story</h3><p class="pre">${esc(a.story)}</p></div><div class="card"><h3>🎯 Our mission</h3><p class="pre">${esc(a.mission)}</p></div></div>
+    <h2>🤝 Our commitment</h2><div class="grid">${a.commitments.map((c,i) => `<div class="card" style="margin:0"><div class="ico">${['🎓','📚','🔒','🗑️','🤖','🌱'][i % 6]}</div><p style="margin:0">${esc(c)}</p></div>`).join('')}</div>
+    <div class="stats"><div class="card stat"><b>${stats.courses}</b>Courses</div><div class="card stat"><b>${stats.members}</b>Members</div><div class="card stat"><b>24/7</b>AI tutor</div></div>
+    ${team.length ? `<h2>👥 Meet the team</h2><div class="grid team">${team.map(t => `<div class="card">${t.has_photo ? `<img class="av" src="/api/team-photo/${t.id}" alt="${esc(t.name)}">` : '<div class="av" style="display:grid;place-items:center;font-size:36px">👤</div>'}
+      <h3 style="margin:10px 0 0">${esc(t.name)}</h3><div style="color:var(--mute)">${esc(t.role)}</div>${t.link ? `<a href="${esc(t.link)}" target="_blank" rel="noopener">Connect &rarr;</a>` : ''}</div>`).join('')}</div>` : ''}
+    <div class="card" style="text-align:center;margin-top:30px"><h3>Want to learn or collaborate?</h3><a class="btn" href="/signup" data-link>Join free</a> <a class="btn ghost" href="/contact" data-link>Get in touch</a></div>`;
+}
+async function feedView(){
+  setTitle('Updates and memories', 'News, photos and memories from LearnWithAI.'); loading('Loading...');
+  const {posts} = await api('/posts');
+  app.innerHTML = `<h1>Updates &amp; memories</h1>${user ? '' : '<div class="notice">🔒 Log in to also see member-only posts.</div>'}
+    <div class="feed">${posts.map(p => `<div class="card post">${p.has_image ? `<img loading="lazy" src="/api/post-image/${p.id}" alt="${esc(p.title)}">` : ''}<h3 style="margin:0 0 6px">${esc(p.title)}</h3>
+    <p>${esc(p.text)}</p>${videoHTML(p.video)}${p.links.map(l => `<p><a href="${esc(l.url)}" target="_blank" rel="noopener">🔗 ${esc(l.title)}</a></p>`).join('')}${p.files.map(f => `<p><a class="btn ghost" href="/api/file/${f.id}">📎 ${esc(f.name)} (${f.size} KB)</a></p>`).join('')}<small>${esc(p.at)} &middot; ${p.public ? '🌍 Public' : '🔒 Members only'}</small></div>`).join('') || '<p>No posts yet.</p>'}</div>`;
+}
+
+function contactView(){
+  setTitle('Contact and Network', 'Reach out, network and ask us anything.');
+  app.innerHTML = `<div class="card narrow"><h2>Network with us / Ask us</h2><input id="n" placeholder="Your name"><input id="e" type="email" placeholder="Your email">
+    <textarea id="msg" rows="5" placeholder="Your message"></textarea>
+    <div class="policybox">${POLICY}</div><label><input type="checkbox" id="ag"> I have read the privacy notice above and agree.</label><p id="m"></p><button class="btn" id="go">Submit</button></div>`;
+  $('go').onclick = async () => { const m = $('m'); try{ await api('/contact','POST',{name:$('n').value, email:$('e').value, message:$('msg').value, agree:$('ag').checked});
+    m.className='ok'; m.textContent = 'Thank you! Your message was submitted.'; }catch(e){ m.className='err'; m.textContent = e.message; } };
+}
+
+const POLICY = `<h2>Privacy Notice and Consent</h2>
+<p><i>Plain-language notice under the Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025 (notified 13 Nov 2025). Version 2026-10.</i></p>
+<h3>Who we are</h3><p>LearnWithAI ("we") decides why and how your personal data is used. Contact: poornachandrashekars@gmail.com.</p>
+<h3>What we collect, why, and which service it supports</h3>
+<table class="t"><tr><th>Data</th><th>Why</th><th>Service</th></tr>
+<tr><td>Email and password (kept only as a one-way hash)</td><td>Create and secure your account</td><td>Login, courses</td></tr>
+<tr><td>First and last name, date of birth</td><td>Identify you and confirm you are 18+</td><td>Profile, resume tools</td></tr>
+<tr><td>Degree, learner or employed status, company, LinkedIn link</td><td>Personalise learning and career tools. Shared with companies or recruiters ONLY for job and reference purposes when you apply or ask us to</td><td>Profile, job references</td></tr>
+<tr><td>Profile photo (optional)</td><td>Show on your profile</td><td>Profile</td></tr>
+<tr><td>Tutor questions, resume text and job descriptions you type</td><td>Create answers. Sent to Google Gemini AI to generate them</td><td>AI tutor, career tools</td></tr>
+<tr><td>Messages you send us</td><td>Reply to you</td><td>Contact form</td></tr>
+<tr><td>Login time and AI usage count</td><td>Security and fair-use limits</td><td>Account</td></tr></table>
+<p>If you tick the optional box, we also send learning notifications and course updates. We never sell your data and never use it for any other purpose.</p>
+<h3>Your rights and how to use them (as easy as giving consent)</h3>
+<ul><li><b>Withdraw consent and erase your data:</b> log in, open My profile, press "Close my profile permanently". Your profile, photo, personal lessons and usage data are deleted.</li>
+<li><b>Notifications:</b> switch off any time in My profile.</li><li><b>Access and correct:</b> edit all your details in My profile.</li>
+<li><b>Nominate</b> another person to exercise these rights for you: email us.</li></ul>
+<h3>Complaints</h3><p>Write to us at poornachandrashekars@gmail.com or use the Contact form. We reply within 7 days. If you are not satisfied you may complain to the Data Protection Board of India (information: meity.gov.in).</p>
+<h3>Safety, retention and age</h3><p>Passwords are hashed and logins use a secure cookie. We keep your data only while your account is active. If a personal data breach happens we will inform the Data Protection Board and affected users as the law requires. This service is only for people aged 18 or above.</p>
+<h3>Terms of use</h3><p>Lessons and AI answers are for learning and can contain mistakes: verify with the official documentation linked in each lesson. Do not misuse the AI, hack the site or give false identity details. We may suspend accounts that break these terms.</p>`;
+function privacyView(){
+  setTitle('Privacy Notice and Consent', 'How LearnWithAI collects, uses and protects your data under the DPDP Act and Rules.');
+  app.innerHTML = '<div class="card legal">' + POLICY + '</div>';
+}
+
+async function adminView(){
+  if(!user || user.role !== 'admin') return needLogin();
+  setTitle('Admin'); loading('Loading admin...');
+  const [d, ab, tm, ps] = await Promise.all([api('/admin/overview'), api('/about'), api('/team'), api('/posts')]);
+  app.innerHTML = `<h1>Admin panel</h1>
+    <div class="card"><h3>AI check</h3><button class="btn" id="t">Test Gemini</button> <span id="tr"></span></div>
+    <div class="card"><h3>Announcements (shown on home page)</h3>${d.notices.map(n => `<p>${esc(n.text)} <button class="btn red" data-nd="${esc(n.id)}">x</button></p>`).join('')}
+      <input id="nt" placeholder="New notification text"><button class="btn" id="na">Post</button></div>
+    <div class="card"><h3>Courses</h3><table class="t">${d.courses.map(c => `<tr><td>${esc(c.title)}</td><td><button class="btn ghost" data-ec="${esc(c.slug)}">Edit</button> <button class="btn ghost" data-clear="${esc(c.slug)}">Clear AI cache</button> <button class="btn red" data-del="${esc(c.slug)}">Delete</button></td></tr>`).join('')}</table>
+      <h4>Add course</h4><input id="ct" placeholder="Title"><input id="cd" placeholder="Short description"><input id="cu" placeholder="Official docs URL (lessons are built from this)"><input id="cv" placeholder="Intro video link (YouTube / Vimeo / .mp4, optional)"><button class="btn" id="ca">Add course</button></div>
+    <div class="card"><h3>Users (${d.users.length}) <a class="btn ghost" href="/api/admin/export.csv">Export CSV</a></h3><p class="hint">Click a name to see every detail.</p><table class="t"><tr><th>Name</th><th>Email</th><th>Degree</th><th>Status</th><th>Company</th><th>LinkedIn</th><th>Role</th><th></th></tr>
+      ${d.users.map(u => `<tr><td><a href="#" data-vu="${esc(u.email)}">${esc(u.first_name)} ${esc(u.last_name)}</a></td><td>${esc(u.email)}</td><td>${esc(u.degree)}</td><td>${esc(u.status)}</td><td>${esc(u.company)}</td>
+      <td><a href="${esc(u.linkedin)}" target="_blank" rel="noopener">link</a></td><td>${esc(u.role)}${u.super ? ' (original)' : ''}</td>
+      <td>${(u.super || (u.role==='admin' && !user.super && u.email!==user.email)) ? '🔒 protected' : `<button class="btn ghost" data-eu="${esc(u.email)}">Edit</button> <button class="btn red" data-du="${esc(u.email)}">Delete</button>`}</td></tr>`).join('')}</table></div>
+    <div class="card"><h3>Add user</h3><div class="two"><input id="ae" type="email" placeholder="Email"><input id="ap" type="password" placeholder="Password (8+ characters)"></div>
+      <div class="two"><input id="af" placeholder="First name"><input id="al" placeholder="Last name"></div>
+      ${user.super ? '<label>Role</label><select id="ar"><option value="user">user</option><option value="admin">admin (sudo)</option></select>' : ''}
+      <p id="am" class="err"></p><button class="btn" id="au">Create user</button></div>
+    <div class="card" id="ed" style="display:none"></div>
+    <div class="card"><h3>About page</h3>
+      <label>Tagline</label><input id="ab_t" value="${esc(ab.about.tagline)}"><label>Our story</label><textarea id="ab_s" rows="4">${esc(ab.about.story)}</textarea>
+      <label>Mission</label><textarea id="ab_m" rows="2">${esc(ab.about.mission)}</textarea><label>Founder bio (your "flex" paragraph)</label><textarea id="ab_b" rows="3">${esc(ab.about.founder_bio)}</textarea>
+      <label>Highlights (one per line)</label><textarea id="ab_h" rows="3">${esc(ab.about.highlights.join('\n'))}</textarea>
+      <label>Pitch video link (YouTube / Vimeo / .mp4)</label><input id="ab_v" value="${esc(ab.about.video || '')}"><label>Brand commitments (one per line)</label><textarea id="ab_c" rows="5">${esc(ab.about.commitments.join('\n'))}</textarea>
+      <label>Social links (one per line: Name | https://link) e.g. Instagram | https://instagram.com/yourpage</label><textarea id="ab_so" rows="3">${esc(ab.about.socials.map(x => x.name + ' | ' + x.url).join('\n'))}</textarea>
+      <p id="ab_m2" class="ok"></p><button class="btn" id="ab_sv">Save About page</button></div>
+    <div class="card"><h3>Team members</h3>${tm.team.map(t => `<p>${esc(t.name)} &mdash; ${esc(t.role)} <button class="btn red" data-dt="${esc(t.id)}">x</button></p>`).join('') || '<p>No team members yet.</p>'}
+      <div class="two"><input id="tn" placeholder="Name"><input id="tr2" placeholder="Role"></div><input id="tl" placeholder="Link (LinkedIn / Instagram, optional)">
+      <label>Photo (optional)</label><input id="tp" type="file" accept="image/*"><button class="btn" id="tm_add">Add team member</button></div>
+    <div class="card"><h3>Posts, images and memories</h3>${ps.posts.map(p => `<p>${esc(p.title)} <small>(${p.public ? 'public' : 'members'})</small> <button class="btn red" data-dp="${esc(p.id)}">x</button></p>`).join('') || '<p>No posts yet.</p>'}
+      <input id="pt" placeholder="Title"><textarea id="px" rows="3" placeholder="Write your post..."></textarea><label>Image (optional)</label><input id="pi" type="file" accept="image/*"><input id="pv" placeholder="Video link (YouTube / Vimeo / .mp4, optional)"><label>Links (one per line: Title | https://link)</label><textarea id="pl" rows="2"></textarea><label>Attachments (up to 3 files, 2.5 MB in total)</label><input id="pf" type="file" multiple>
+      <label><input type="checkbox" id="pp2"> Visible to the public (untick = members only)</label><button class="btn" id="po_add">Publish post (everyone online gets notified)</button></div>
+    <div class="card"><h3>Messages (${d.messages.length})</h3>${d.messages.map(m => `<p><b>${esc(m.name)}</b> (${esc(m.email)}) <small>${esc(m.at)}</small><br>${esc(m.message)}</p><hr style="border-color:var(--line)">`).join('') || 'No messages yet.'}</div>`;
+  $('t').onclick = async () => { const r = $('tr'); r.textContent = 'Testing...'; try{ r.className='ok'; r.textContent = (await api('/admin/test-ai')).reply; }catch(e){ r.className='err'; r.textContent = e.message; } };
+  let tPh = null, pImg = null;
+  $('tp').onchange = e => e.target.files[0] && shrink(e.target.files[0], 300, r => tPh = r);
+  $('pi').onchange = e => e.target.files[0] && shrink(e.target.files[0], 1100, r => pImg = r);
+  $('ab_sv').onclick = async () => { try{ await api('/admin/about','PUT',{tagline:$('ab_t').value, story:$('ab_s').value, mission:$('ab_m').value, founder_bio:$('ab_b').value, video:$('ab_v').value, highlights:$('ab_h').value, commitments:$('ab_c').value, socials:$('ab_so').value}); $('ab_m2').textContent = 'Saved!'; }catch(e){ $('ab_m2').textContent = e.message; } };
+  $('tm_add').onclick = async () => { try{ await api('/admin/team','POST',{name:$('tn').value, role:$('tr2').value, link:$('tl').value, photo:tPh}); adminView(); }catch(e){ alert(e.message); } };
+  $('po_add').onclick = async () => { try{ await api('/admin/post','POST',{title:$('pt').value, text:$('px').value, image:pImg, public:$('pp2').checked, video:$('pv').value, links:$('pl').value, files: await readFiles($('pf'))}); adminView(); }catch(e){ alert(e.message); } };
+  app.querySelectorAll('[data-dt]').forEach(b => b.onclick = async () => { await api('/admin/team/' + b.dataset.dt,'DELETE'); adminView(); });
+  app.querySelectorAll('[data-dp]').forEach(b => b.onclick = async () => { if(confirm('Delete this post?')){ await api('/admin/post/' + b.dataset.dp,'DELETE'); adminView(); }});
+  app.querySelectorAll('[data-vu]').forEach(a => a.onclick = e => { e.preventDefault();
+    const u = d.users.find(x => x.email === a.dataset.vu), ed = $('ed'); ed.style.display = '';
+    const rows = {Email:u.email, Role:u.role, 'Date of birth':u.dob, Degree:u.degree, Status:u.status, Company:u.company, LinkedIn:u.linkedin, Notifications:u.notify ? 'yes' : 'no',
+      'Consent version':u.consent, Joined:u.created, 'Last login':u.last_login, 'AI calls (total)':u.ai_calls, 'Personal lessons':u.personal_lessons};
+    ed.innerHTML = `<h3>${esc(u.first_name)} ${esc(u.last_name)}</h3>${u.has_photo ? `<img class="av big" src="/api/photo/${u.id}" alt="photo">` : ''}<table class="t">${Object.entries(rows).map(([k,v]) => `<tr><th>${k}</th><td>${esc(v)}</td></tr>`).join('')}</table>`;
+    ed.scrollIntoView({behavior:'smooth'}); });
+  $('na').onclick = async () => { await api('/admin/notice','POST',{text:$('nt').value}); adminView(); };
+  $('ca').onclick = async () => { await api('/admin/course','POST',{title:$('ct').value, desc:$('cd').value, docs:$('cu').value, video:$('cv').value}); adminView(); };
+  app.querySelectorAll('[data-nd]').forEach(b => b.onclick = async () => { await api('/admin/notice/' + b.dataset.nd,'DELETE'); adminView(); });
+  app.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => { if(confirm('Delete course?')){ await api('/admin/course/' + b.dataset.del,'DELETE'); adminView(); }});
+  app.querySelectorAll('[data-du]').forEach(b => b.onclick = async () => { if(confirm('Delete this user permanently?')){ try{ await api('/admin/user/' + encodeURIComponent(b.dataset.du),'DELETE'); adminView(); }catch(e){ alert(e.message); } }});
+  $('au').onclick = async () => { try{ await api('/admin/user','POST',{email:$('ae').value, password:$('ap').value, first_name:$('af').value, last_name:$('al').value, role:$('ar')?.value}); adminView(); }catch(e){ $('am').textContent = e.message; } };
+  app.querySelectorAll('[data-eu]').forEach(b => b.onclick = () => {
+    const u = d.users.find(x => x.email === b.dataset.eu), ed = $('ed'); ed.style.display = '';
+    ed.innerHTML = `<h3>Edit ${esc(u.email)}</h3>${pform(u)}${user.super && !u.super ? '<label>Role</label><select id="rl"><option value="user">user</option><option value="admin">admin (sudo)</option></select>' : ''}
+      <input id="npw" type="password" placeholder="New password (leave empty to keep the old one)"><p id="em" class="err"></p><button class="btn" id="es">Save changes</button>`;
+    pinit(u); if($('rl')) $('rl').value = u.role; ed.scrollIntoView();
+    $('es').onclick = async () => { try{ await api('/admin/user/' + encodeURIComponent(u.email),'PUT',{...pread(), role:$('rl')?.value, password:$('npw').value}); adminView(); }catch(e){ $('em').textContent = e.message; } };
+  });
+  app.querySelectorAll('[data-ec]').forEach(b => b.onclick = async () => { const c = d.courses.find(x => x.slug === b.dataset.ec);
+    const title = prompt('Course title', c.title); if(title === null) return; const desc = prompt('Short description', c.desc); if(desc === null) return;
+    const docs = prompt('Official docs URL', c.docs); if(docs === null) return; const video = prompt('Intro video link (YouTube / Vimeo / .mp4, empty = none)', c.video || ''); if(video === null) return; await api('/admin/course/' + c.slug,'PUT',{title, desc, docs, video}); adminView(); });
+  app.querySelectorAll('[data-clear]').forEach(b => b.onclick = async () => { await api('/admin/clear/' + b.dataset.clear,'POST'); b.textContent = 'Cleared!'; });
+}
+
+(async () => { try{ user = (await api('/me')).user; }catch(e){} buildPal(); renderAuth(); route(); pollEvents(); })();
+</script>
+</body>
+</html>

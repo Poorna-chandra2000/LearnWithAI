@@ -1,0 +1,9 @@
+flask
+pymongo[srv]
+pyjwt
+requests
+markdown
+bleach
+python-dotenv
+reportlab
+python-docx

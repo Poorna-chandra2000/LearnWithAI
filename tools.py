@@ -1,0 +1,28 @@
+"""Career tools. To add a tool, add one more entry: key, icon, title, desc, fields (id, label, rows) and a prompt using {profile} and the field ids."""
+RULE = "Never invent facts about the person; use [add detail] placeholders where information is missing."
+TOOLS = [
+ {"key": "cover-letter", "icon": "✉️", "title": "Cover Letter", "desc": "Tailored one-page letter for a job",
+  "fields": [("jd", "Job description", 6), ("details", "Your highlights / achievements (optional)", 4)],
+  "prompt": "Write a professional one-page cover letter (about 250-300 words, ATS friendly, plain text).\nPROFILE:\n{profile}\nJOB DESCRIPTION:\n{jd}\nHIGHLIGHTS:\n{details}\n" + RULE},
+ {"key": "interview-prep", "icon": "🎤", "title": "Interview Prep", "desc": "Likely questions with model answers",
+  "fields": [("jd", "Job description or role + tech stack", 6), ("level", "Your level (fresher / 3 yrs / senior)", 1)],
+  "prompt": "Prepare an interview guide for this candidate.\nPROFILE:\n{profile}\nROLE/JOB:\n{jd}\nLEVEL: {level}\nGive: 8 technical questions, 4 HR/behavioural questions (with STAR answer outlines), 3 questions the candidate should ask, and a 5-point last-day revision checklist. Model answers must be accurate and concise."},
+ {"key": "cold-email", "icon": "📨", "title": "Recruiter Message", "desc": "Cold email / LinkedIn message",
+  "fields": [("target", "Who are you writing to (role, company)", 2), ("goal", "Your goal (job, referral, advice)", 2)],
+  "prompt": "Write 3 short outreach messages (a LinkedIn note under 300 characters, a short email, and a follow-up).\nSENDER:\n{profile}\nTO: {target}\nGOAL: {goal}\nBe polite, specific and not pushy. " + RULE},
+ {"key": "roadmap", "icon": "🗺️", "title": "Learning Roadmap", "desc": "Week-by-week plan to reach a role",
+  "fields": [("goal", "Target role (e.g. Java Backend Developer)", 1), ("skills", "Skills you already have", 3), ("weeks", "Weeks available", 1)],
+  "prompt": "Create a week-by-week learning roadmap.\nLEARNER:\n{profile}\nGOAL: {goal}\nCURRENT SKILLS: {skills}\nWEEKS: {weeks}\nFor each week give topics, a small project and free resources (prefer official documentation). End with a portfolio checklist."},
+ {"key": "projects", "icon": "🧪", "title": "Project Ideas", "desc": "Portfolio projects with resume bullets",
+  "fields": [("stack", "Tech stack / target role", 2), ("level", "Your level", 1)],
+  "prompt": "Suggest 5 portfolio projects for: {stack} (level: {level}). For each: what it does, key features, tech stack, 3 build milestones and 2 resume bullet points with [add number] placeholders."},
+ {"key": "bullets", "icon": "💪", "title": "Bullet Improver", "desc": "Rewrite weak resume bullets",
+  "fields": [("bullets", "Paste your resume bullets (one per line)", 8), ("jd", "Job description (optional)", 4)],
+  "prompt": "Rewrite each resume bullet in strong STAR style starting with an action verb. Keep facts true; use [add number] where a metric is missing. Include keywords from the job description when relevant.\nBULLETS:\n{bullets}\nJOB DESCRIPTION:\n{jd}"},
+ {"key": "linkedin-post", "icon": "📣", "title": "LinkedIn Post", "desc": "3 post drafts about your learning",
+  "fields": [("topic", "What did you learn / build / achieve?", 4)],
+  "prompt": "Write 3 different LinkedIn post drafts (story, tips list, short announcement) with hashtags.\nAUTHOR:\n{profile}\nTOPIC: {topic}\n" + RULE},
+ {"key": "salary", "icon": "💰", "title": "Salary Negotiation", "desc": "Scripts for offer discussions",
+  "fields": [("offer", "Offer details (role, company, CTC, other offers)", 4), ("ask", "What you want", 2)],
+  "prompt": "Prepare a salary negotiation plan for a candidate in India.\nCANDIDATE:\n{profile}\nOFFER: {offer}\nWANTS: {ask}\nGive: a strategy, 3 word-for-word scripts (call, email, counter-offer), what else to negotiate besides CTC, and mistakes to avoid. Be honest that market numbers must be verified."},
+]
