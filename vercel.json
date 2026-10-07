@@ -1,18 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/app.py"
-    }
-  ],
-  "functions": {
-    "app.py": {
-      "maxDuration": 120,
-      "includeFiles": "*.{html,py}"
-    }
-  }
+  "functions": { "app.py": { "maxDuration": 120, "includeFiles": "*.{html,py}" } }
 }

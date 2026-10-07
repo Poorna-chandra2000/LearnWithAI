@@ -9,6 +9,8 @@ from flask import Flask, request, jsonify, make_response, Response, g, abort
 from pymongo import MongoClient, ReturnDocument
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
+import certifi
+
 
 load_dotenv()
 GEMINI_KEY = os.getenv("GEMINI_API_KEY", "")
@@ -20,8 +22,8 @@ SITE_URL = os.getenv("SITE_URL", "http://127.0.0.1:5000")
 CONSENT_VERSION = "2026-10"
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROFILE_FIELDS = ("first_name", "last_name", "dob", "degree", "status", "company", "linkedin")
-
-db = MongoClient(os.getenv("MONGO_URI"))["learnapp"]
+uri=os.getenv("MONGO_URI")
+db = MongoClient(uri,tlsCAFile=certifi.where())["learnapp"]
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 4 * 1024 * 1024      # Vercel allows about 4.5 MB per request
 def now(): return datetime.datetime.now(datetime.timezone.utc)
